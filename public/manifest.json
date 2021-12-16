@@ -1,0 +1,16 @@
+{
+    "name": "Budget Tracker",
+    "short_name": "BgtTrack",
+    "description": "An app that allows you to track your finicial transactions and budget your money",
+    "icons": [
+        {
+            "src": "/images/icons-vector.svg",
+            "type": "image/svg+xml",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/?source=pwa",
+    "background_color": "#01579b",
+    "display": "standalone",
+    "theme_color": "#ffffff"
+}
