@@ -1,3 +1,4 @@
+// const { response } = require("express");
 let db;
 
 const request = indexedDB.open("transaction_unit", 1)
@@ -7,16 +8,16 @@ request.onupgradeneeded = function(event) {
     //save a refrence to the database
     const db = event.target.result;
 
-    db.createObjectStore("new_transaction", { atouIncrement: true })    
+    db.createObjectStore("new_transaction", { autoIncrement: true })    
     
 }
 
 // upon successful
-request.onsuccess = function(even) {
+request.onsuccess = function(event) {
     db = event.target.result
 
     if (navigator.onLine) {
-
+      uploadTransaction()
     }
 }
 
@@ -42,7 +43,7 @@ function uploadTransaction() {
 
     getAll.onsuccess = function() {
         if (getAll.result.length > 0) {
-            fetch("/api/transaction", {
+            fetch("/api/transaction/bulk", {
                 method: "POST",
                 body: JSON.stringify(getAll.result),
                 headers: {
